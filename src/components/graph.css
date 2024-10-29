@@ -1,0 +1,17 @@
+/* Graph container */
+.graph {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1;
+    min-height: 300px;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .graph {
+      min-height: 200px;
+      padding: 0.5rem;
+    }
+  }
+  

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSortColumn } from "../redux/store/sortingSlice";
+import { setSortColumn, toggleSortDirection } from "../redux/store/sortingSlice";
+import "./table.css";
 
 const Table = ({ product }) => {
   const dispatch = useDispatch();
@@ -8,25 +9,25 @@ const Table = ({ product }) => {
   const sortDirection = useSelector((state) => state.sorting.sortDirection);
 
   const handleSort = (column) => {
-    dispatch(setSortColumn({ column }));
+    if (sortColumn === column) {
+      // If already sorted in ascending, toggle to descending
+      dispatch(toggleSortDirection());
+    } else {
+      // New column: start sorting in descending if first click, else ascending
+      dispatch(setSortColumn(column));
+    }
   };
 
-  if (!product || !product.sales) {
-    return null; // Handle missing data
-  }
+  if (!product || !product.sales) return null;
+
   const sortedSales = [...product.sales].sort((a, b) => {
     if (!sortColumn) return 0;
     const valueA = a[sortColumn];
     const valueB = b[sortColumn];
 
-    if (sortDirection === "asc") {
-      return valueA > valueB ? 1 : -1;
-    } else {
-      return valueA < valueB ? 1 : -1;
-    }
+    return sortDirection === "asc" ? (valueA > valueB ? 1 : -1) : (valueA < valueB ? 1 : -1);
   });
 
-  // Function to render arrow based on sort direction
   const renderSortArrow = (column) => (
     <span
       style={{
@@ -38,80 +39,33 @@ const Table = ({ product }) => {
       ▼
     </span>
   );
+
   return (
-    <div
-      style={{
-        height: "50vh",
-        maxwidth: "100%",
-        backgroundColor: "#ffffff",
-        padding: "1rem",
-        borderRadius: "8px",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-        overflowX: "auto",
-      }}
-    >
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+    <div className="table">
+      <table>
         <thead>
           <tr>
-            <th style={headerStyle} onClick={() => handleSort("weekEnding")}>
-              Week Ending {renderSortArrow("weekEnding")}
-            </th>
-            <th style={headerStyle} onClick={() => handleSort("retailSales")}>
-              Retail Sales {renderSortArrow("retailSales")}
-            </th>
-            <th
-              style={headerStyle}
-              onClick={() => handleSort("wholesaleSales")}
-            >
-              Wholesale Sales {renderSortArrow("wholesaleSales")}
-            </th>
-            <th style={headerStyle} onClick={() => handleSort("unitsSold")}>
-              Units Sold {renderSortArrow("unitsSold")}
-            </th>
-            <th
-              style={headerStyle}
-              onClick={() => handleSort("retailerMargin")}
-            >
-              Retailer Margin {renderSortArrow("retailerMargin")}
-            </th>
+            <th onClick={() => handleSort("weekEnding")}>Week Ending {renderSortArrow("weekEnding")}</th>
+            <th onClick={() => handleSort("retailSales")}>Retail Sales {renderSortArrow("retailSales")}</th>
+            <th onClick={() => handleSort("wholesaleSales")}>Wholesale Sales {renderSortArrow("wholesaleSales")}</th>
+            <th onClick={() => handleSort("unitsSold")}>Units Sold {renderSortArrow("unitsSold")}</th>
+            <th onClick={() => handleSort("retailerMargin")}>Retailer Margin {renderSortArrow("retailerMargin")}</th>
           </tr>
         </thead>
         <tbody>
           {sortedSales.map((sale, index) => (
             <tr key={index}>
-              <td style={cellStyle}>{sale.weekEnding}</td>
-              <td
-                style={cellStyle}
-              >{`$${sale.retailSales.toLocaleString()}`}</td>
-              <td
-                style={cellStyle}
-              >{`$${sale.wholesaleSales.toLocaleString()}`}</td>
-              <td style={cellStyle}>{sale.unitsSold.toLocaleString()}</td>
-              <td
-                style={cellStyle}
-              >{`$${sale.retailerMargin.toLocaleString()}`}</td>
+              <td>{sale.weekEnding}</td>
+              <td>{`$${sale.retailSales.toLocaleString()}`}</td>
+              <td>{`$${sale.wholesaleSales.toLocaleString()}`}</td>
+              <td>{sale.unitsSold.toLocaleString()}</td>
+              <td>{`$${sale.retailerMargin.toLocaleString()}`}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-};
-
-const headerStyle = {
-  backgroundColor: "#f4f4f4",
-  padding: "0.75rem",
-  textAlign: "left",
-  fontWeight: "bold",
-  borderBottom: "1px solid #ddd",
-  cursor: "pointer",
-  userSelect: "none",
-};
-
-const cellStyle = {
-  padding: "0.75rem",
-  textAlign: "left",
-  borderBottom: "1px solid #ddd",
 };
 
 export default Table;

@@ -5,35 +5,25 @@ import Graph from "./components/graph";
 import Header from "./components/header";
 import Sidebar from "./components/sideBar";
 import Table from "./components/table";
+import "./App.css";
 
 function App() {
   const products = useSelector(selectProductData);
   const selectedProduct = products[0];
 
   return (
-    <div style={{ height: "100%", display: "flex", flexDirection: "column", backgroundColor: '#f6f8fa'  }}>
+    <div className="app-container">
       <Header />
-      <div style={{ display: "flex", flex: 1, padding: "1rem" }}>
-        <div style={{ flexBasis: "20%", flexGrow: 0 }}>
+      <div className="app-content">
+        <div className="app-sidebar">
           <Sidebar product={selectedProduct} />
         </div>
 
-        {/* Main content container for chart and table */}
-        <div
-          style={{
-            marginLeft: "1rem",
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            overflow: "hidden",
-            width: "100%",
-          }}
-        >
-          <div style={{ flex: 1 }}>
+        <div className="app-main-content">
+          <div className="app-graph">
             <Graph product={selectedProduct} />
           </div>
-          <div style={{ flex: 1 }}>
+          <div className="app-table">
             <Table product={selectedProduct} />
           </div>
         </div>

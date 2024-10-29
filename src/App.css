@@ -1,0 +1,63 @@
+/* App container */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f8fa;
+  }
+  
+  /* Main content area for desktop layout */
+  .app-content {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: row; /* Row layout on desktop */
+  }
+  
+  /* Sidebar */
+  .app-sidebar {
+    flex-basis: 250px;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /* Main content container for Graph and Table */
+  .app-main-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden; /* Prevents internal scroll */
+  }
+  
+  /* Graph and Table styling */
+  .app-graph,
+  .app-table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    min-height: 300px; /* Minimum height for desktop */
+  }
+  
+  /* Tablet and mobile adjustments: Stack components vertically */
+  @media (max-width: 768px) {
+    .app-content {
+      flex-direction: column; /* Stack layout on tablet and mobile */
+      overflow-y: auto; /* Unified scrolling for the entire page */
+      gap: 1rem;
+    }
+  
+    .app-sidebar,
+    .app-graph,
+    .app-table {
+      padding: 0.5rem;
+      min-height: auto; /* Remove fixed height to prevent internal scrolling */
+    }
+  }
+  
