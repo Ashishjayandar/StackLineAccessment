@@ -15,7 +15,7 @@ const sortingSlice = createSlice({
       state.sortDirection = "asc"; // Start with ascending by default
     },
     toggleSortDirection(state) {
-      // Toggle between ascending and descending
+      // Toggle ascending and descending
       state.sortDirection = state.sortDirection === "asc" ? "desc" : "asc";
     },
     resetSorting(state) {

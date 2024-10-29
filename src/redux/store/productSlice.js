@@ -5,7 +5,7 @@ export const fetchProductData = createAsyncThunk("products/fetchProductData", as
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data); // Simulates fetching data from an API
-    }, 1000); // 1-second delay
+    }, 1000); // 1-second delay (I know its too much, but it's just for testing purposes)
   });
 });
 

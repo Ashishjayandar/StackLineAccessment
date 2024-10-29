@@ -41,7 +41,6 @@ describe("Table Component", () => {
       },
     });
 
-    // Spy on the store's dispatch method
     dispatchSpy = jest.spyOn(store, "dispatch");
   });
 
@@ -51,8 +50,6 @@ describe("Table Component", () => {
         <Table product={mockProduct} />
       </Provider>
     );
-
-    // Check if sales data rows are rendered
     expect(screen.getByText("2023-01-07")).toBeInTheDocument();
     expect(screen.getByText("$1,000")).toBeInTheDocument();
     expect(screen.getByText("$800")).toBeInTheDocument();
@@ -77,17 +74,16 @@ describe("Table Component", () => {
     );
   
     const retailSalesHeader = screen.getByText("Retail Sales");
-  
-    // First click should dispatch setSortColumn
+
     fireEvent.click(retailSalesHeader);
     expect(dispatchSpy).toHaveBeenCalledWith(setSortColumn("retailSales"));
-  
-    // Update the state after first dispatch
+
     store.dispatch(setSortColumn("retailSales"));
-  
-    // Second click should dispatch toggleSortDirection
+
     fireEvent.click(retailSalesHeader);
     expect(dispatchSpy).toHaveBeenCalledWith(toggleSortDirection());
+
+    // reason for these multiple clicks is cause the first click calls the setSortColumn function and the second click calls the toggleSortDirection function
   });
   
 });

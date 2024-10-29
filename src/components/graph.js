@@ -26,6 +26,8 @@ const Graph = ({ product }) => {
   if (!product) return null;
 
   const formatToMonth = (dateStr) => format(parseISO(dateStr), "MMM");
+  
+  //Todo: make this more readable if time permits
   const monthlySales = product.sales.reduce((acc, sale) => {
     const month = formatToMonth(sale.weekEnding).toUpperCase();
     if (!acc[month]) acc[month] = { retailSales: 0, wholesaleSales: 0 };

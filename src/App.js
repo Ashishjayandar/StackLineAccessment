@@ -9,13 +9,13 @@ import Sidebar from "./components/sideBar";
 import Table from "./components/table";
 import "./App.css";
 
-function App() {
+const App= () => {
   const dispatch = useDispatch();
-  const products = useSelector(selectProductData); // Use the data from the store
+  const products = useSelector(selectProductData);
   const loadingStatus = useSelector((state) => state.product.status);
 
   useEffect(() => {
-    dispatch(fetchProductData()); // Fetch product data on load
+    dispatch(fetchProductData());
   }, [dispatch]);
 
   if (loadingStatus === "loading") return <p>Loading...</p>;

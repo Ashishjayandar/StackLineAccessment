@@ -10,11 +10,9 @@ const Table = ({ product }) => {
 
   const handleSort = (column) => {
     if (sortColumn === column) {
-      // If already sorted in ascending, toggle to descending
-      dispatch(toggleSortDirection());
+      dispatch(toggleSortDirection()); // Toggle sort direction only if the column is set meaning it's already sorted
     } else {
-      // New column: start sorting in descending if first click, else ascending
-      dispatch(setSortColumn(column));
+      dispatch(setSortColumn(column));// New click on any other column
     }
   };
 

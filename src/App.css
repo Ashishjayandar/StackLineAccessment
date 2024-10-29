@@ -1,4 +1,4 @@
-/* App container */
+/* Overall App container */
 .app-container {
     min-height: 100vh;
     display: flex;
@@ -6,16 +6,15 @@
     background-color: #f6f8fa;
   }
   
-  /* Main content area for desktop layout */
+  /* Main content for large viewport */
   .app-content {
     display: flex;
     flex: 1;
     padding: 1rem;
     gap: 1rem;
-    flex-direction: row; /* Row layout on desktop */
+    flex-direction: row;
   }
   
-  /* Sidebar */
   .app-sidebar {
     flex-basis: 250px;
     background-color: #ffffff;
@@ -27,7 +26,7 @@
     flex-direction: column;
   }
   
-  /* Main content container for Graph and Table */
+  /* this is for graph and table */
   .app-main-content {
     display: flex;
     flex: 1;
@@ -49,8 +48,8 @@
   /* Tablet and mobile adjustments: Stack components vertically */
   @media (max-width: 768px) {
     .app-content {
-      flex-direction: column; /* Stack layout on tablet and mobile */
-      overflow-y: auto; /* Unified scrolling for the entire page */
+      flex-direction: column;
+      overflow-y: auto;
       gap: 1rem;
     }
   
@@ -58,7 +57,7 @@
     .app-graph,
     .app-table {
       padding: 0.5rem;
-      min-height: auto; /* Remove fixed height to prevent internal scrolling */
+      min-height: auto;
     }
   }
   
