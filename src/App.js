@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectProductData } from "./redux/store/productSlice";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProductData, selectProductData } from "./redux/store/productSlice";
 import Graph from "./components/graph";
 import Header from "./components/header";
 import Sidebar from "./components/sideBar";
@@ -8,7 +10,16 @@ import Table from "./components/table";
 import "./App.css";
 
 function App() {
-  const products = useSelector(selectProductData);
+  const dispatch = useDispatch();
+  const products = useSelector(selectProductData); // Use the data from the store
+  const loadingStatus = useSelector((state) => state.product.status);
+
+  useEffect(() => {
+    dispatch(fetchProductData()); // Fetch product data on load
+  }, [dispatch]);
+
+  if (loadingStatus === "loading") return <p>Loading...</p>;
+
   const selectedProduct = products[0];
 
   return (

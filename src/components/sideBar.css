@@ -1,12 +1,5 @@
 /* Sidebar container */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
+.sidebar   
   /* Content alignment */
   .sidebar-content {
     width: 100%;
@@ -35,10 +28,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding-top: 1.5rem; /* Adds padding around the borders */
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-top: 1px solid #ccc; /* Thin line above tags */
-    border-bottom: 1px solid #ccc; /* Thin line below tags */
   }
   
   .sidebar-tag {
@@ -48,6 +39,12 @@
     border-radius: 2px;
     font-size: 0.8rem;
     border: 1px solid #404e63;
+  }
+
+  .sidebar-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
   }
   
   /* Tablet view adjustments */

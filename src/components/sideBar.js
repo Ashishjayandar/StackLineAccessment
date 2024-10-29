@@ -11,6 +11,7 @@ const Sidebar = ({ product }) => {
         <div className="sidebar-details">
           <h2 className="sidebar-title">{product.title}</h2>
           <p className="sidebar-subtitle">{product.subtitle}</p>
+          <hr className="sidebar-divider" />
           <div className="sidebar-tags">
             {product.tags.map((tag, index) => (
               <span key={index} className="sidebar-tag">
@@ -18,6 +19,7 @@ const Sidebar = ({ product }) => {
               </span>
             ))}
           </div>
+          <hr className="sidebar-divider" />
         </div>
       </div>
     </div>

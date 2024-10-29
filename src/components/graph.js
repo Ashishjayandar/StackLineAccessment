@@ -65,7 +65,23 @@ const Graph = ({ product }) => {
       x: { grid: { display: false } },
       y: { display: false, grid: { display: false } },
     },
-    plugins: { legend: { display: false } },
+    plugins: {
+      legend: { display: false },
+      title: { 
+        display: true, 
+        text: "Retail Sales", 
+        align: "start",
+        font: {
+          size: 18,
+          weight: "bold",
+          family: "Open Sans",
+        },
+        padding: {
+          top: 10,
+          bottom:20
+        },
+      },
+    },
   };
 
   return (
