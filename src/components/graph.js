@@ -104,13 +104,12 @@ const Graph = ({ product }) => {
   return (
     <div
       style={{
-        height: "100%",
+        height: "50vh",
         maxWidth: "100%",
         backgroundColor: "#ffffff",
         padding: "1rem",
         borderRadius: "8px",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-        boxSizing: "border-box",
       }}
     >
       <Line data={chartData} options={options} />

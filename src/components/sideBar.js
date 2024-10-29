@@ -8,7 +8,6 @@ const Sidebar = ({ product }) => {
   return (
     <div
       style={{
-        width: "300px",
         backgroundColor: "#ffffff",
         padding: "1rem",
         borderRadius: "8px",
@@ -24,8 +23,7 @@ const Sidebar = ({ product }) => {
           height: "50%", // Limits this section to the top 50% of the sidebar
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: 'space-between'
+          alignItems: "center"
         }}
       >
         <div
