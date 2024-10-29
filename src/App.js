@@ -26,6 +26,8 @@ function App() {
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
+            overflow: "hidden",
+            width: "100%",
           }}
         >
           <div style={{ flex: 1 }}>
